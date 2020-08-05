@@ -8,8 +8,8 @@ An demo of SpTSkM for long-term re-ID. The code is tested on Anaconda python 3.6
 ## Requirement
 * Python 3.6
 * Pytorch
-* OpenCV
-* CUDA and cudnn
+* yaml
+* CUDA 10.0 and cudnn 7.4
 ## Method
 The framework of SpTSkM as shown in the following figure. It includes two streams, SSIN and SMIN. SSIN takes image squences and their corresponding masks as input.It aims to learn motion patterns, shape information and some subtle identity properties. SMIN is adapted from ST-GCN [4], which aims to learn pure motion pattern from skeleton squences.
 
