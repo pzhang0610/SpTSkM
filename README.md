@@ -5,12 +5,18 @@ An demo of SpTSkM for long-term re-ID. The code is tested on Anaconda python 3.6
 * Download the data partition information from https://github.com/liangzheng06/MARS-evaluation.
 * We use pretrained LIP [2] to extract the image mask, LIP is available on https://github.com/Engineering-Course/LIP_JPPNet.
 * For 3D skeleton estimation, we use a weakly-supervised method [3] from https://github.com/xingyizhou/pose-hg-3d. 
-
+## Requirement
+* Python 3.6
+* Pytorch
+* OpenCV
+* CUDA and cudnn
 ## Method
 The framework of SpTSkM as shown in the following figure. It includes two streams, SSIN and SMIN. SSIN takes image squences and their corresponding masks as input.It aims to learn motion patterns, shape information and some subtle identity properties. SMIN is adapted from ST-GCN [4], which aims to learn pure motion pattern from skeleton squences.
 
 ![framework](/imgs/framework.png)
 
 ## Training
+For SSIN, run /SSIN/
+
 
 ## Testing
