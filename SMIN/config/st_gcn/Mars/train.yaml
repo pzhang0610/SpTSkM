@@ -1,0 +1,47 @@
+work_dir: ./mars
+pretrained_weights: ./model/st_gcn.kinetics.pt
+#pretrained_weights: ./triplet/best_model.pt
+
+feeder: feeder.feeder.Feeder
+train_feeder_args:
+  normalization: False
+  random_choose: True
+  random_move: True
+  random_shift: False
+  window_size: 28
+  relabel: True
+  data_path: ./data/mars_train_data.npy
+  label_path: ./data/mars_train_label.pkl
+  cam_path: ./data/mars_train_camid.pkl
+gallery_feeder_args:
+  relabel: False
+  data_path: ./data/mars_gallery_data.npy
+  label_path: ./data/mars_gallery_label.pkl
+  cam_path: ./data/mars_gallery_camid.pkl
+probe_feeder_args:
+  relabel: False
+  data_path: ./data/mars_probe_data.npy
+  label_path: ./data/mars_probe_label.pkl
+  cam_path: ./data/mars_probe_camid.pkl
+
+#model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 4
+  num_class: 622
+  dropout: 0.5
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'cvid_reid'
+    strategy: 'spatial'
+
+#optim
+#weight_decay: 0.0001
+base_lr: 0.1
+step: [50, 100]
+
+# training
+device: [1]
+batch_size: 256
+test_batch_size: 1
+num_epoch: 200

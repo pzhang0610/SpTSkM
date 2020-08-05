@@ -1,0 +1,27 @@
+weights: ./gcn/best_model.pt
+
+# feeder
+feeder: feeder.feeder.Feeder
+gallery_feeder_args:
+  relabel: False
+  data_path: ./data/small/gallery_data_small.npy
+  label_path: ./data/small/gallery_label_small.pkl
+probe_feeder_args:
+  relabel: False
+  data_path: ./data/small/probe_data_small.npy
+  label_path: ./data/small/probe_label_small.pkl
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 4
+  num_class: 50
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'cvid_reid'
+    strategy: 'spatial'
+
+# test
+phase: test
+device: 0
+test_batch_size: 1

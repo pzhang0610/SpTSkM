@@ -1,0 +1,26 @@
+weights: ./mars/best_model.pt
+
+# feeder
+gallery_feeder_args:
+  data_path: ./data/mars_gallery_data.npy
+  label_path: ./data/mars_gallery_label.pkl
+  camid_path: ./data/mars_gallery_camid.pkl
+probe_feeder_args:
+  data_path: ./data/mars_probe_data.npy
+  label_path: ./data/mars_probe_label.pkl
+  camid_path: ./data/mars_probe_camid.pkl
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 4
+  num_class: 622
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'cvid_reid'
+    strategy: 'spatial'
+
+# test
+phase: test
+device: 0
+test_batch_size: 1
